@@ -94,7 +94,9 @@ class Main {
 					System.out.print(", ");
 				
 				if (!relative){
-					System.out.print(times.get(i).toLocalTime());
+					LocalTime t = times.get(i).toLocalTime();
+					t = t.withSecond(0);
+					System.out.print(t);
 				} else {
 					long min = Duration.between(now, times.get(i)).toMinutes();
 					System.out.print(min);

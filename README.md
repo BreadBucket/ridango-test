@@ -1,4 +1,3 @@
-
 ## Compile
 
 Using make:
@@ -7,6 +6,7 @@ Using make:
 or <br/>
 shell command: `javac --source-path src src/*.java`
 
+Min java version: 17
 
 ## Run
 

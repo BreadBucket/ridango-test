@@ -12,4 +12,4 @@ all: $(wildcard src/*.java)
 
 .PHONY: clean
 clean:
-	rm src/*.class
+	rm -f src/*.class
