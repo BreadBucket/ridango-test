@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -29,6 +30,7 @@ class Main {
 	
 	
 	public static void main(String[] args) throws Exception {
+		// args = new String[]{"10", "1"};	// DEBUG
 		String id = null;
 		int num = -1;
 		boolean relative = true;
@@ -124,7 +126,7 @@ class Main {
 	
 	
 	static HashMap<CharSequence,ArrayList<LocalDateTime>> searchTrips(String id, int num) throws IOException, Exception {
-		try (BufferedReader in = new BufferedReader(new FileReader(stopTimes_Path))){
+		try (BufferedReader in = new BufferedReader(new FileReader(stopTimes_Path, StandardCharsets.UTF_8))){
 			
 			// Read header and discard BOM
 			String header = in.readLine();
@@ -192,7 +194,7 @@ class Main {
 				
 				for (int i = 0 ; i < l.size() ; i++){
 					if (arrival.isBefore(l.get(i))){
-						l.removeLast();
+						l.remove(l.size() - 1);
 						l.add(i, arrival);
 						break;
 					}
@@ -234,7 +236,7 @@ class Main {
 	
 	
 	static HashMap<CharSequence,ArrayList<LocalDateTime>> searchRoutes(HashMap<CharSequence,ArrayList<LocalDateTime>> arrivals, int num) throws IOException, Exception {
-		try (BufferedReader in = new BufferedReader(new FileReader(trips_path))){
+		try (BufferedReader in = new BufferedReader(new FileReader(trips_path, StandardCharsets.UTF_8))){
 			
 			// Read header and discard BOM
 			String header = in.readLine();
@@ -289,7 +291,7 @@ class Main {
 	
 	
 	static HashMap<CharSequence,CharSequence> searchRouteNames(Set<CharSequence> routes) throws IOException, Exception {
-		try (BufferedReader in = new BufferedReader(new FileReader(routes_path))){
+		try (BufferedReader in = new BufferedReader(new FileReader(routes_path, StandardCharsets.UTF_8))){
 			
 			// Read header and discard BOM
 			String header = in.readLine();
@@ -331,7 +333,7 @@ class Main {
 	
 	
 	static CharSequence getStopName(String id) throws IOException, Exception {
-		try (BufferedReader in = new BufferedReader(new FileReader(stops_path))){
+		try (BufferedReader in = new BufferedReader(new FileReader(stops_path, StandardCharsets.UTF_8))){
 			
 			// Read header and discard BOM
 			String header = in.readLine();

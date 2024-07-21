@@ -14,7 +14,7 @@ public class ColumParser {
 	
 	public int getStringIndex(int col){
 		if (cols.size() <= col){
-			int i = cols.getLast();
+			int i = cols.get(cols.size() - 1);
 			
 			// String deboog = row.substring(i);
 			while (cols.size() <= col){
